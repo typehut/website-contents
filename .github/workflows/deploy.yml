@@ -1,0 +1,16 @@
+name: Request Deployment
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+jobs:
+  request:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -X POST "$DEPLOY_HOOK"
+    env:
+      DEPLOY_HOOK: ${{ secrets.DEPLOY_HOOK }}
