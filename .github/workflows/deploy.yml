@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Cloudinary Upload Images
-        uses: emmanuelgautier/cloudinary-upload-action@v1.0
+        uses: typehut/cloudinary-upload-action@main
         with:
           cloud-name: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
           api-key: ${{ secrets.CLOUDINARY_API_KEY }}
