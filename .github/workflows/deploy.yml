@@ -14,3 +14,15 @@ jobs:
       - run: curl -X POST "$DEPLOY_HOOK"
     env:
       DEPLOY_HOOK: ${{ secrets.DEPLOY_HOOK }}
+
+  upload_images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cloudinary Upload Images
+        uses: emmanuelgautier/cloudinary-upload-action@v1.0
+        with:
+          cloud-name: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
+          api-key: ${{ secrets.CLOUDINARY_API_KEY }}
+          api-secret: ${{ secrets.CLOUDINARY_API_SECRET }}
+          images: "./public/**/*.{png,jpg,jpeg,webp,gif}"
